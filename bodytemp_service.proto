@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+service BodyTempService {
+    rpc ListRecent (BodyTempQuery) returns (stream BodyTemp);
+    rpc RecordBodyTemp (BodyTempRecord) returns (Result);
+}
+
+enum ResponseCode {
+    OK = 0;
+    PARAM_ERROR = 1;
+    ACCESS_DENIED = 2;
+}
+
+message Result {
+    ResponseCode code = 1;
+    string description = 2;
+}
+
+message BodyTemp {
+    string temp = 1;
+    uint32 timestamp = 2;
+}
+
+message BodyTempRecord {
+    string temp = 1;
+    uint32 timestamp = 2;
+    string userId = 3;
+}
+
+message BodyTempQuery {
+    string userId = 1;
+    uint32 fromTime = 2;
+}

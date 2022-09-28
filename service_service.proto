@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service ServiceService {
+    // 服务治理，通过服务表获取服务前，先通过lock hash确定是否需要更新
+    // 首次访问无lock
+    rpc ListService (ListServiceRequest) returns (stream Service);
+}
+
+message ListServiceRequest {
+    string lock = 1;
+}
+
+message Service {
+    string name = 1;
+    int32 proto_id = 2;
+}
