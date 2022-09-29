@@ -18,16 +18,16 @@ message Result {
 
 message BodyTemp {
     string temp = 1;
-    uint32 timestamp = 2;
+    uint64 timestamp = 2;
 }
 
 message BodyTempRecord {
     string temp = 1;
-    uint32 timestamp = 2;
+    uint64 timestamp = 2;
     string userId = 3;
 }
 
 message BodyTempQuery {
     string userId = 1;
-    uint32 fromTime = 2;
+    uint64 fromTime = 2;
 }
